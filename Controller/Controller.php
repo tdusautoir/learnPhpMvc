@@ -3,23 +3,38 @@
 namespace Controller;
 
 class Controller {
-    protected $controller;
+    protected $route;
     protected $params = [];
 
-    public function __construct($controller)
+    public function __construct($route)
     {
-        $this->controller = $controller;
+        $this->route = $route;
+        $this->loadManager();
+    }
+
+    public function loadManager() {
+        if(!empty($this->route->manager)) {
+            foreach($this->route->manager as $manager) {
+                $managerName = $manager . "Manager";
+                $managerClass = "\\Model\\" . $managerName;
+                $this->{$managerName} = new $managerClass();
+            }
+        }
     }
 
     public function view($template) 
     {
-        if(file_exists("View/$this->controller/css/$template.css")) {
-            $header = "<link rel='stylesheet' href='View/$this->controller/css/$template.css'";
+        if(file_exists("View/". $this->route->controller ."/css/$template.css")) {
+            $headers[] = "<link rel='stylesheet' href='View/". $this->route->controller . "/css/$template.css'>";
+        }
+
+        if(file_exists("View/". $this->route->controller ."/scripts/$template.js")) {
+            $headers[] = "<script src='View/". $this->route->controller . "/scripts/$template.js' defer></script>";
         }
 
         ob_start();
         extract($this->params);
-        include("View/$this->controller/$template.php");
+        include("View/". $this->route->controller . "/$template.php");
         $content = ob_get_clean();
         include("View/layout.php");
     }

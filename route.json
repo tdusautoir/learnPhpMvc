@@ -2,31 +2,82 @@
     {
         "path":"/User",
         "controller":"User",
-        "action":"ShowUserList",
-        "method": "GET"
+        "action":"ShowUsers",
+        "method": "GET",
+        "manager": [
+            "user"
+        ]
     },
     {
         "path":"/User/([0-9]*)",
         "controller":"User",
         "action":"ShowUser",
-        "method": "GET"
-    },
-    {
-        "path":"/User",
-        "controller":"User",
-        "action":"CreateUser",
-        "method": "POST"
+        "method": "GET",
+        "manager": [
+            "user"
+        ]
     },
     {
         "path":"/User/update",
         "controller":"User",
         "action":"UpdateUser",
-        "method": "POST"
+        "method": "POST",
+        "manager": [
+            "user"
+        ]
     },
     {
         "path":"/User/delete",
         "controller":"User",
         "action":"DeleteUser",
-        "method": "GET"
+        "method": "GET",
+        "manager": [
+            "user"
+        ]
+    },
+    {
+        "path":"/User/signin",
+        "controller":"User",
+        "action":"SigninView",
+        "method": "GET",
+        "manager": [
+            "user"
+        ]
+    },
+    {
+        "path":"/User/signin",
+        "controller":"User",
+        "action":"Signin",
+        "method": "POST",
+        "manager": [
+            "user"
+        ]
+    },
+    {
+        "path":"/User/login",
+        "controller":"User",
+        "action":"LoginView",
+        "method": "GET",
+        "manager": [
+            "user"
+        ]
+    },
+    {
+        "path":"/User/login",
+        "controller":"User",
+        "action":"Login",
+        "method": "POST",
+        "manager": [
+            "user"
+        ]
+    },
+    {
+        "path":"/User/logout",
+        "controller":"User",
+        "action":"Logout",
+        "method": "GET",
+        "manager": [
+            "user"
+        ]
     }
 ]

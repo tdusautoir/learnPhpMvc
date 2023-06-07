@@ -5,21 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style.css">
-    <?= (!empty($header) ? $header : '') ?>
+    <link rel="stylesheet" href="/reset.css">
+    <link rel="stylesheet" href="/style.css">
+    <?php if(!empty($headers)): ?>
+        <?php foreach($headers as $header): ?>
+            <?= $header ?>
+        <?php endforeach; ?>
+    <?php endif; ?>
 </head>
 <body>
     <header>
-        <nav>
-            <ul>
-                <li></li>
-                <li></li>
-            </ul>
-        </nav>
+        <div class="header-content">
+            <h1>PHP-MVC</h1>
+            <nav>
+                <ul>
+                    <li><a href="/User">Liste des utilisateurs</a></li>
+                    <?php if(isset($_SESSION["user"])): ?>
+                        <li><a href="/User/logout">Logout</a></li>
+                    <?php else: ?>
+                        <li><a href="/User/signin">Signin</a></li>
+                        <li><a href="/User/login">Login</a></li>
+                    <?php endif; ?>
+                </ul>
+            </nav>
+        </div>
     </header>
+    <?php if(isset($error)): ?>
+        <div class="error"><?= $error ?></div>
+    <?php endif; ?>
     <div class="content">
-        <p><?= $content ?></p>
+        <?= $content ?>
     </div>
 </body>
 </html>

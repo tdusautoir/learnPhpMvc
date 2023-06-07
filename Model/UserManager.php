@@ -7,4 +7,12 @@ class UserManager extends ModelManager{
     {
         parent::__construct("user");
     }
+
+    public function getByMail($mail) {
+        $req = $this->bdd->prepare("SELECT * FROM " . $this->table . " WHERE mail = :mail");
+        $req->bindParam(":mail", $mail);
+        $req->execute();
+        $req->setFetchMode(\PDO::FETCH_OBJ);
+        return $req->fetch();
+    }
 }
