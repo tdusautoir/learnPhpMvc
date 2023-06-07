@@ -17,6 +17,20 @@ foreach ($routes as $route) {
     }
 }
 if (count($result) == 1) {
+    if(!empty($result[0]->auth)) {
+        if(empty($_SESSION["user"])) {
+            header("Location: /User/login");
+            exit;
+        }
+
+        if(!empty($result[0]->auth)) {
+            if(!in_array($_SESSION["user"]->role, $result[0]->auth)) {
+                header("Location: /error");
+                exit;
+            }
+        }
+    }
+
     // $match are the queries parameters
     preg_match("|^".$result[0]->path. "$|",$_SERVER["REQUEST_URI"],$match);
     unset($match[0]);

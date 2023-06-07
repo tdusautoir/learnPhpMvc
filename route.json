@@ -6,6 +6,9 @@
         "method": "GET",
         "manager": [
             "user"
+        ],
+        "auth": [
+            "admin"
         ]
     },
     {
