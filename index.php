@@ -19,7 +19,7 @@ if (count($result) == 1) {
     preg_match("|^".$result[0]->path. "$|",$_SERVER["REQUEST_URI"],$match);
     unset($match[0]);
     $controllerName = "\\Controller\\" .$result[0]->controller."Controller";
-    $controller = new $controllerName();
+    $controller = new $controllerName($result[0]->controller);
 
     $controller->{$result[0]->action}(...$match);
 } else {
