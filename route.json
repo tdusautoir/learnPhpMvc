@@ -79,5 +79,32 @@
         "manager": [
             "user"
         ]
+    },
+    {
+        "path":"/Product",
+        "controller":"Product",
+        "action":"ShowProducts",
+        "method": "GET",
+        "manager": [
+            "product"
+        ]
+    },
+    {
+        "path": "/Product/new",
+        "controller": "Product",
+        "action": "addProductView",
+        "method": "GET",
+        "manager": [
+            "product"
+        ]
+    },
+    {
+        "path": "/Product/new",
+        "controller": "Product",
+        "action": "addProduct",
+        "method": "POST",
+        "manager": [
+            "product"
+        ]
     }
 ]
