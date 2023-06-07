@@ -1,0 +1,32 @@
+[
+    {
+        "path":"/User",
+        "controller":"User",
+        "action":"ShowUserList",
+        "method": "GET"
+    },
+    {
+        "path":"/User/([0-9]*)",
+        "controller":"User",
+        "action":"ShowUser",
+        "method": "GET"
+    },
+    {
+        "path":"/User",
+        "controller":"User",
+        "action":"CreateUser",
+        "method": "POST"
+    },
+    {
+        "path":"/User/update",
+        "controller":"User",
+        "action":"UpdateUser",
+        "method": "POST"
+    },
+    {
+        "path":"/User/delete",
+        "controller":"User",
+        "action":"DeleteUser",
+        "method": "GET"
+    }
+]
