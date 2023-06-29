@@ -39,6 +39,12 @@ class Controller {
         include("View/layout.php");
     }
 
+    public function json($data) 
+    {
+        header("Content-Type: application/json");
+        echo json_encode($data);
+    }
+
     public function compact($key, $value) 
     {
         $this->params[$key] = $value;

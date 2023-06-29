@@ -23,11 +23,9 @@ if (count($result) == 1) {
             exit;
         }
 
-        if(!empty($result[0]->auth)) {
-            if(!in_array($_SESSION["user"]->role, $result[0]->auth)) {
-                header("Location: /error");
-                exit;
-            }
+        if(!in_array($_SESSION["user"]->role, $result[0]->auth)) {
+            header("Location: /error");
+            exit;
         }
     }
 
